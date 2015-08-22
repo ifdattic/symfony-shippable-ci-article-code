@@ -1,0 +1,16 @@
+stop_on_failure: true
+
+suites:
+    core_suite:
+        namespace: Domain\Core
+        psr4_prefix: Domain\Core
+        spec_path: src/Domain/Core
+        src_path: src/Domain/Core
+        spec_prefix: Spec
+
+    task_suite:
+        namespace: Domain\Task
+        psr4_prefix: Domain\Task
+        spec_path: src/Domain/Task
+        src_path: src/Domain/Task
+        spec_prefix: Spec
