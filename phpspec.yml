@@ -1,5 +1,3 @@
-stop_on_failure: true
-
 suites:
     core_suite:
         namespace: Domain\Core
