@@ -19,11 +19,14 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "ramsey/uuid": "^3.0-dev",
+        "beberlei/assert": "~2.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
-        "phpunit/phpunit": "~4.8"
+        "phpunit/phpunit": "~4.8",
+        "phpspec/phpspec": "^2.3-beta3"
     },
     "scripts": {
         "post-root-package-install": [

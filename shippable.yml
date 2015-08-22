@@ -12,6 +12,7 @@ before_script:
 
 script:
   - phpunit -c app --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+  - ./bin/phpspec run -fpretty --verbose -n
 
 after_script:
     - cp -r ./app/logs shippable/logs
