@@ -15,6 +15,14 @@ class TaskId
     }
 
     /**
+     * @return static
+     */
+    public static function generate()
+    {
+        return new static(Uuid::generate());
+    }
+
+    /**
      * @param  string $uuid
      * @return static
      */

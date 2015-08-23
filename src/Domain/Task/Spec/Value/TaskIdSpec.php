@@ -48,4 +48,11 @@ class TaskIdSpec extends ObjectBehavior
 
         $this->shouldThrow(AssertionFailed::CLASS)->duringInstantiation();
     }
+
+    function it_should_generate_new_task_id()
+    {
+        $this->beConstructedThrough('generate');
+
+        $this->shouldHaveType(TaskId::CLASS);
+    }
 }
