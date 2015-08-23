@@ -65,11 +65,22 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
+        types:
+            taskid: TaskBundle\DBAL\Type\TaskIdType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    task_models:
+                        alias: Task
+                        mapping: true
+                        type: yml
+                        dir: "%kernel.root_dir%/../src/TaskBundle/Resources/config/doctrine/entity-mappings"
+                        prefix: Domain\Task\Entity
+                        is_bundle: false
 
 # Swiftmailer Configuration
 swiftmailer:

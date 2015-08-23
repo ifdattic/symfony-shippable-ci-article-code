@@ -6,12 +6,25 @@ php:
 
 archive: true
 
+env:
+    global:
+        - SYMFONY__ENV__DATABASE_HOST=127.0.0.1
+        - SYMFONY__ENV__DATABASE_PORT=~
+        - SYMFONY__ENV__DATABASE_NAME=symfony
+        - SYMFONY__ENV__DATABASE_USER=shippable
+        - SYMFONY__ENV__DATABASE_PASSWORD=
+        # Secret parameter value
+        - secure: fg+H+h5IGUbqZkFNO3vwWY4EKyOxCbVZE/UDhcbmWbbrLoLDfwuxRUcYeWYAEesUyxEtTbkRRFmUYN40rGFeh8zQwShMYgqRlu6ub/iv/dF2cFfP9a4ZA5ULUbdZE3ekEpO7pTbXHnSAEj5Ff//L7G93n2Uz7qk0a1iK70Vfqrw0xsrw36ZqgvGifPQKGbKKLr7r9w6OZYDZp2xCF5QNogaZMsbUfaEFMP1w9SOBqd3+XnrQk8ZUx++FqklhG6baMDpzb9rYntpYif1DtIdyvUVGyErjyFlxgZx04sdr2Foh/yL8rzRoJn1Ge7A8YHKNEURKedP0eAeskp39LDk/Ug==
+
 before_install:
     - echo "xdebug.max_nesting_level = 1000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 before_script:
     - composer self-update -n
     - composer install --prefer-dist -n
+    - mysql -e "CREATE DATABASE $SYMFONY__ENV__DATABASE_NAME"
+    - ./app/console doctrine:schema:create -n
 
 script:
     - phpunit -c app --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
