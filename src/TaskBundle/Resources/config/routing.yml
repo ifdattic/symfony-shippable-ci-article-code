@@ -1,0 +1,4 @@
+api.tasks_list:
+    path: /tasks
+    defaults: { _controller: TaskBundle:Task:list }
+    methods: GET
