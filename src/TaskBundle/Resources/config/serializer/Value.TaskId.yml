@@ -1,0 +1,10 @@
+Domain\Task\Value\TaskId:
+    exclusion_policy: ALL
+    properties:
+        uuid:
+            expose: true
+            serialized_name: id
+            access_type: public_method
+            accessor:
+                getter: getValue
+            read_only: true
