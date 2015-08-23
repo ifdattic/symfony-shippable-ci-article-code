@@ -6,13 +6,19 @@ php:
 
 archive: true
 
+before_install:
+    - echo "xdebug.max_nesting_level = 1000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
 before_script:
     - composer self-update -n
     - composer install --prefer-dist -n
 
 script:
-  - phpunit -c app --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
-  - ./bin/phpspec run -fpretty --verbose -n
+    - phpunit -c app --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+    - ./bin/phpspec run -fpretty --verbose -n
+    - ./app/console server:start -n
+    - ./bin/behat --format=progress --out=std --format=junit --out=shippable/testresults -n
 
 after_script:
+    - ./app/console server:stop -n
     - cp -r ./app/logs shippable/logs

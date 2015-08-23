@@ -1,0 +1,7 @@
+Domain\Task\Entity\Task:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            inline: true
+            type: Domain\Task\Value\TaskId

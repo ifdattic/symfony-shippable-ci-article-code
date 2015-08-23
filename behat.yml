@@ -1,0 +1,16 @@
+default:
+    extensions:
+        Behat\MinkExtension:
+            base_url: http://localhost:8000
+            sessions:
+                default:
+                    goutte: ~
+
+    suites:
+        api:
+            paths:
+                - %paths.base%/src/TaskBundle/Features
+            contexts:
+                - AppBundle\Features\Context\ApiContext
+                - Behat\MinkExtension\Context\MinkContext
+                - TaskBundle\Features\Context\TaskApiContext

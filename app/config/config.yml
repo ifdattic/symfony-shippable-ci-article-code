@@ -78,3 +78,10 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+jms_serializer:
+    metadata:
+        directories:
+            Task:
+                namespace_prefix: Domain\Task
+                path: "@TaskBundle/Resources/config/serializer/"
