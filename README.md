@@ -1,4 +1,4 @@
-symfony-shippable-ci-article-code
-=================================
+Continuous Integration of PHP Project Using Shippable
+=====================================================
 
-A Symfony project created on August 22, 2015, 6:40 am.
+The code used in [Continuous Integration of PHP Project Using Shippable](http://ifdattic.com/continuous-integration-php-project-using-shippable/) article.
